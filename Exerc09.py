@@ -61,23 +61,23 @@ def desenhaGrafico2(x, y, yde, yce, file_name, label, label2, label3, file_title
 def countingSort(lista, exp1):                                                                                                                                                                                                                            
     n = len(lista) 
   
-    # The output array elements that will have sorted arr 
+    #Irá armazenar a lista com os elementos já ordenados!## 
     output = [0] * (n) 
   
-    # initialize count array as 0 
+    #Inicializa a lista com valor 0# 
     count = [0] * (10) 
   
-    # Store count of occurrences in count[] 
+    #Guarda o 'número de ocorrências' na lista declarada como 'count[]'#
     for i in range(0, n): 
         index = (lista[i]//exp1) 
         count[ (index)%10 ] += 1
   
-    # Change count[i] so that count[i] now contains actual 
-    #  position of this digit in output array 
+    #Muda-se o valor de 'count[i]' , assim, este irá conter o valor atual lido;# 
+    #i = a posição de tal dígito na lista já ordenada                          #
     for i in range(1,10): 
         count[i] += count[i-1] 
   
-    # Build the output array 
+    #Constrói a lista de saída com os elementos já ordenados# 
     i = n-1
     while i>=0: 
         index = (lista[i]//exp1) 
@@ -85,8 +85,8 @@ def countingSort(lista, exp1):
         count[ (index)%10 ] -= 1
         i -= 1
   
-    # Copying the output array to arr[], 
-    # so that arr now contains sorted numbers 
+    #Copia-se a lista com os elementos já ordenados(output[]) para a lista declarada como parâmetro de entrada(lista[]),# 
+    #assim a lista de entrada irá conter os elementos corretamente ordenados!                                           #
     i = 0
     for i in range(0,len(lista)): 
         lista[i] = output[i] 
@@ -95,12 +95,10 @@ def countingSort(lista, exp1):
 #"Função Radix Sort(+Counting Sort)"
 #Implementação do aluno#########################################################################{
 def radixSort(lista):                                                                                                                                                                                                                            
-    # Find the maximum number to know number of digits 
+    #Pegamos o valor máximo da lista para saber o seu tamanho(número total de elementos)#
     max1 = max(lista) 
   
-    # Do counting sort for every digit. Note that instead 
-    # of passing digit number, exp is passed. exp is 10^i 
-    # where i is current digit number 
+    #(Obs: exp = 10^i) 
     exp = 1
     while max1//exp > 0: 
         countingSort(lista,exp) 
